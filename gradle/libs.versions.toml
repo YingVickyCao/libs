@@ -1,26 +1,27 @@
 [versions]
-agp = "8.1.3"
-org-jetbrains-kotlin-android = "1.9.0"
-core-ktx = "1.9.0"
-junit = "4.13.2"
-androidx-test-ext-junit = "1.1.5"
-espresso-core = "3.5.1"
-appcompat = "1.6.1"
-material = "1.8.0"
-constraintlayout = "2.1.4"
+#appcompat = "1.6.1"
 
 [libraries]
-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+#ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+coreKtx = { group = "androidx.core", name = "core-ktx", version = "1.9.0" }
+kotlinStdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version = "1.9.20" }
+#appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.6.1" }
+material = { group = "com.google.android.material", name = "material", version = "1.8.0" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
+gson = { group = "com.google.code.gson", name = "gson", version = "2.10.1" }
+rxpermissions = { group = "com.tbruyelle.rxpermissions2", name = "rxpermissions", version = "0.9.4" }  # rxpermissions is "0.9.4@aar"
+rxjava2 = { group = "io.reactivex.rxjava2", name = "rxjava", version = "2.2.19" }
+rxandroid2 = { group = "io.reactivex.rxjava2", name = "rxandroid", version = "2.1.1" }
+
+# test
+test-espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version = "3.5.1" }
+test-androidxJunit = { group = "androidx.test.ext", name = "junit", version = "1.1.5" }
+test-junit = { group = "junit", name = "junit", version = "4.13.2" }
 
 [plugins]
-com-android-application = { id = "com.android.application", version.ref = "agp" }
-org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
+#androidApp = { id = "com.android.application", version.ref = "8.1.3" }
+#kotlinAandroid = { id = "org.jetbrains.kotlin.android", version = "1.9.0" }
 
 [bundles]
 

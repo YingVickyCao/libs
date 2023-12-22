@@ -1,0 +1,81 @@
+<resources>
+
+<!-- The item's text contrast ratio is 3.72. This ratio is based on a text color of #8A000000 and background color of #77C353.
+Consider increasing this item's text contrast ratio to 4.50 or greater.   -->
+    <style name="topic">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_topic</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">#4CAF50</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="btn">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="btn_red" parent="btn">
+        <item name="android:backgroundTint">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="btn_green" parent="btn">
+        <item name="android:backgroundTint">@android:color/holo_green_light</item>
+    </style>
+
+    <style name="btn_small" parent="btn">
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="btn_small_red" parent="btn_small">
+        <item name="android:backgroundTint">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="btn_small_green" parent="btn_small">
+        <item name="android:backgroundTint">@android:color/holo_green_light</item>
+    </style>
+
+    <style name="tv">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">@dimen/margin_tiny</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="tv.small">
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+
+    <style name="div">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@android:color/darker_gray</item>
+        <item name="android:layout_marginTop">@dimen/margin_tiny</item>
+        <item name="android:layout_marginBottom">@dimen/margin_tiny</item>
+    </style>
+
+    <style name="div.red">
+        <item name="android:background">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="div.green">
+        <item name="android:background">#0f0</item>
+    </style>
+
+    <style name="div.big">
+        <item name="android:layout_height">5dp</item>
+    </style>
+
+    <style name="div.vertical">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:background">@android:color/holo_red_dark</item>
+        <item name="android:layout_height">24dp</item>
+    </style>
+
+    <style name="div.vertical.big">
+        <item name="android:layout_width">5dp</item>
+    </style>
+</resources>

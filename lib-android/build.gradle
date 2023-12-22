@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    namespace 'com.hades.example.android.lib'
+
+    compileSdk rootProject.ext.compileSdk
+
+    defaultConfig {
+        minSdk rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.targetCompatibility
+    }
+    buildFeatures {
+        buildConfig true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':JavaLib')
+
+    implementation libs.appcompat
+    implementation libs.gson
+    implementation libs.material
+    implementation(libs.rxpermissions) {
+        artifact {
+            type = 'aar'
+        }
+    }
+    implementation libs.rxjava2
+    implementation libs.rxandroid2
+    implementation libs.kotlinStdlib
+
+    testImplementation libs.test.junit
+
+    androidTestImplementation libs.test.junit
+    androidTestImplementation libs.test.espressoCore
+}
+
+//apply from: 'publish.gradle'
