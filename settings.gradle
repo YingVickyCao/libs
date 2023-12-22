@@ -27,5 +27,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "libs"
 include ':app'
-//include ':lib-android'
-//include ':JavaLib'
+include ':lib-android'
+include ':JavaLib'
