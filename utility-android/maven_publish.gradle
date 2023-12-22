@@ -1,0 +1,72 @@
+// 所有项目的依赖配置
+apply plugin: 'maven-publish'
+
+// Because the components are created only during the afterEvaluate phase, you must
+// configure your publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+//                groupId = "com.hades.utility.android"
+//                artifactId = project.getName()
+//                version = project.versionCode
+
+                groupId = "com.hades"
+                artifactId = project.getName()
+                version = "0.0.1"
+                System.err.println("artifactId=" + artifactId)
+
+
+                pom {
+                    name = artifactId
+                    description = 'A concise description of ' + project.getName() + " library"
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                }
+            }
+
+
+            debug(MavenPublication) {
+                from components.debug
+
+                groupId = "com.hades"
+                artifactId = project.getName()
+                version = "0.0.1"
+                System.err.println("artifactId=" + artifactId)
+
+//                System.err.println("groupId=" + project.group)
+//                System.err.println("artifactId=" + project.getName())
+//                System.err.println("version=" + project.versionCode)
+
+                pom {
+                    name = artifactId
+                    description = 'A concise description of ' + project.getName() + " library"
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                }
+            }
+        }
+
+        repositories {
+            // for debug
+            // :core:publishToMavenLocal
+            mavenLocal()
+
+//        // for release
+//        // :core:publish
+            maven {
+                name = "release"
+                url = layout.buildDirectory.dir('repos/releases')
+            }
+        }
+    }
+}

@@ -1,0 +1,93 @@
+// 所有项目的依赖配置
+apply plugin: 'maven-publish'
+
+// Because the components are created only during the afterEvaluate phase, you must
+// configure your publications using the afterEvaluate() lifecycle method.
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = "${groupId}"
+                artifactId = project.getName()
+                version = project.versionCode
+
+                pom {
+                    name = artifactId
+                    description = 'A concise description of ' + project.getName() + " library"
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                }
+            }
+
+
+            debug(MavenPublication) {
+                from components.debug
+                groupId = "com.hades.example.android.libexamples"
+                artifactId = project.getName() + '-debug'
+                version = project.versionCode
+
+//                System.err.println("groupId=" + project.group)
+//                System.err.println("artifactId=" + project.getName())
+//                System.err.println("version=" + project.versionCode)
+
+                pom {
+                    name = artifactId
+                    description = 'A concise description of ' + project.getName() + " library"
+                    licenses {
+                        license {
+                            name = 'The Apache License, Version 2.0'
+                            url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        }
+                    }
+                }
+            }
+        }
+
+        repositories {
+            // for debug
+            // :core:publishToMavenLocal
+            // 即使注释掉 mavenLocal()，task PublishToMavenLocal 默认也是发布到mavenLocal()
+            // 当然，通过配置也可以配置将mavenLocal() 作为 release的发布地址
+            mavenLocal()
+
+
+//        // for release
+//        // :core:publish
+//            maven {
+//                name = "release"
+//                url = layout.buildDirectory.dir('repos/releases')
+//            }
+        }
+    }
+}
+
+//tasks.withType(PublishToMavenRepository) { it.dependsOn lint, test }.configureEach {
+//    def predicate = provider {
+//        (repository == publishing.repositories.release && publication == publishing.publications.release)
+//    }
+//    onlyIf("publishing binary to the release repository") {
+//        predicate.get()
+//    }
+//}
+//
+//tasks.withType(PublishToMavenLocal).configureEach {
+//    def predicate = provider {
+//        publication == publishing.publications.debug
+//    }
+//    onlyIf("publishing binary to the release repository") {
+//        predicate.get()
+//    }
+//}
+
+// 测试发现，新版maven-publish，不需要androidSourcesJar
+//task androidSourcesJar(type: Jar) {
+//    archiveClassifier.set('sources')
+//    from android.sourceSets.main.java.srcDirs
+//}
+
+// 试发现，pom.withXml是指带上依赖信息. 其实新版本的maven-publish不需要指定依赖信息，那么pom文件也能包含依赖的dependency信息，那么当用户使用时，就能自动根据dependency信息下载所依赖的library。

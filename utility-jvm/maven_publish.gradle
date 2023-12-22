@@ -1,0 +1,68 @@
+// 添加 maven-publish 插件
+apply plugin: 'maven-publish'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+// 发布配置
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+//            groupId = project.group
+            groupId = "com.hades"
+            artifactId = project.getName()
+            version = "0.0.1"
+
+//                System.err.println("project.version=" + project.version)
+//                System.err.println("project.group=" + project.group)
+
+            pom {
+                name = artifactId
+                description = 'A concise description of ' + project.getName() + " library"
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        // for debug
+        // :core:publishToMavenLocal
+        // 即使注释掉 mavenLocal()，task PublishToMavenLocal 默认也是发布到mavenLocal()
+//        mavenLocal()
+
+//        // for release
+//        // :core:publish
+        maven {
+            name = "release"
+            url = layout.buildDirectory.dir('repos/releases')
+        }
+    }
+}
+
+tasks.withType(PublishToMavenRepository).configureEach {
+    def predicate = provider {
+        (repository == publishing.repositories.release)
+    }
+    onlyIf("publishing binary to the release repository") {
+        predicate.get()
+    }
+}
+
+/**
+ * maven-publish
+ * gradle core:publish
+ *
+ * Ref :
+ * https://developer.android.google.cn/studio/build/maven-publish-plugin?hl=zh-cn
+ * https://docs.gradle.org/current/userguide/publishing_maven.html#publishing_maven:repositories
+ * https://docs.gradle.org/current/userguide/publishing_customization.html
+ * https://repo1.maven.org/maven2/com/squareup/okhttp3/okhttp/4.12.0/
+ * https://github.com/google/ExoPlayer
+ **/

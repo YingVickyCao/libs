@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':lib-android')
+    implementation project(path: ':utility-android')
 
     implementation libs.coreKtx
     implementation libs.appcompat
