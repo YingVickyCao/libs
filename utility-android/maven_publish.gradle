@@ -58,11 +58,11 @@ afterEvaluate {
 
         repositories {
             // for debug
-            // :core:publishToMavenLocal
+            // :utility-android:publishToMavenLocal
             mavenLocal()
 
 //        // for release
-//        // :core:publish
+//        // :utility-android:publish
             maven {
                 name = "release"
                 url = layout.buildDirectory.dir('repos/releases')
