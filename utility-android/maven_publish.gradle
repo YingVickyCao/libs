@@ -1,6 +1,20 @@
 // 所有项目的依赖配置
 apply plugin: 'maven-publish'
 
+android {
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+
+        singleVariant('debug') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
+}
+
 // Because the components are created only during the afterEvaluate phase, you must
 // configure your publications using the afterEvaluate() lifecycle method.
 afterEvaluate {
