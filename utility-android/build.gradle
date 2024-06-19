@@ -37,11 +37,6 @@ dependencies {
     implementation libs.appcompat
     implementation libs.gson
     implementation libs.material
-    implementation(libs.rxpermissions) {
-        artifact {
-            type = 'aar'
-        }
-    }
     implementation libs.rxjava2
     implementation libs.rxandroid2
     implementation libs.kotlinStdlib
