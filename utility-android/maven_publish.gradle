@@ -28,7 +28,7 @@ afterEvaluate {
 
                 groupId = "com.hades"
                 artifactId = project.getName()
-                version = "0.0.1"
+                version = "0.0.2"
                 System.err.println("artifactId=" + artifactId)
 
 
